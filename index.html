@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="mn" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Монгол Хоолны Вэб Сайт | Лаб 8 · Tailwind</title>
+    <meta name="description" content="Монголын уламжлалт хоолны цэс: хуушуур, бууз, цуйван, банштай цай, хорхог, бантан.">
+    <script>
+        // Хуудас харагдахаас өмнө theme-ийг тохируулж, анивчилтаас сэргийлнэ
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme-tw'); } catch (e) {}
+            if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <link href="dist/output.css" rel="stylesheet">
+</head>
+<body></body>
+    <p>Доорх товчлуурууд дээр дарж хувилбаруудыг үзнэ үү.</p>
+    <div class="btn-container">
+        <a href="bootstrap/" class="btn bootstrap">Bootstrap Хувилбар------</a>
+        
+        
+        <a href="tailwind/" class="btn tailwind">Tailwind Хувилбар</a>
+    </div>
+</body>
+</html>
