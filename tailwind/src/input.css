@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Dark mode: media query биш, <html data-theme="dark"> товчоор удирдана */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* Brand өнгө: --color-* namespace-д зарласнаар bg-brand, text-brand, border-brand
+   гэх мэт utility class автоматаар үүснэ */
+@theme {
+    --color-brand: #8b0000;
+    --color-brand-hover: #b30000;
+    --color-brand-light: #ff8a80;
+    --color-brand-deep: #5a0000;
+    --color-accent: #ffd700;
+}
+
+@layer base {
+    html { scroll-behavior: smooth; }
+    [data-theme=dark] { color-scheme: dark; }
+}

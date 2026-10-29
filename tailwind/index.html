@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="mn" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Монгол Хоолны Вэб Сайт | Лаб 8 · Tailwind</title>
+    <meta name="description" content="Монголын уламжлалт хоолны цэс: хуушуур, бууз, цуйван, банштай цай, хорхог, бантан.">
+    <script>
+        // Хуудас харагдахаас өмнө theme-ийг тохируулж, анивчилтаас сэргийлнэ
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme-tw'); } catch (e) {}
+            if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <link href="dist/output.css" rel="stylesheet">
+</head>
+<body class="flex min-h-screen flex-col bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-10 bg-neutral-800 text-white dark:bg-neutral-950">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-3">
+            <a href="#" class="text-xl font-bold text-accent">NomadKitchen</a>
+            <div class="flex items-center gap-2 md:order-last">
+                <button id="themeToggle" type="button" aria-pressed="false"
+                        class="cursor-pointer rounded-full border border-accent px-3 py-1 text-sm hover:bg-accent hover:text-neutral-900">
+                    <span id="themeLabel">Шөнө</span>
+                </button>
+                <button id="menuToggle" type="button" aria-label="Цэс нээх" aria-expanded="false" aria-controls="navMenu"
+                        class="cursor-pointer rounded border border-white/40 px-3 py-1 md:hidden">&#9776;</button>
+            </div>
+            <ul id="navMenu" class="hidden w-full flex-col md:ml-auto md:mr-6 md:flex md:w-auto md:flex-row md:gap-5">
+                <li><a href="#" class="block border-t border-neutral-600 py-3 hover:text-accent md:border-0 md:py-1">Нүүр хуудас</a></li>
+                <li><a href="#gallery" class="block border-t border-neutral-600 py-3 hover:text-accent md:border-0 md:py-1">Галерей</a></li>
+                <li><a href="#contact" class="block border-t border-neutral-600 py-3 hover:text-accent md:border-0 md:py-1">Холбоо барих</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="bg-brand px-4 py-12 text-center text-white dark:bg-brand-deep">
+        <h1 class="text-3xl font-bold md:text-5xl">Монгол Үндэсний Хоолны Цэс</h1>
+        <p class="mt-2 text-lg">Уламжлалт амт чанар, соёл уламжлал</p>
+    </header>
+
+    <main class="flex-1">
+        <!-- 3 баганатай card grid -->
+        <section id="gallery" aria-labelledby="galleryTitle" class="mx-auto max-w-6xl px-4 py-12">
+            <h2 id="galleryTitle" class="mb-1 text-2xl font-semibold text-brand dark:text-brand-light">Хоолны галерей</h2>
+            <p class="mb-6 text-neutral-600 dark:text-neutral-300">Монголын уламжлалт 6 хоол.</p>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <article class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-800">
+                <img src="../img/huushuur.webp" class="aspect-[4/3] w-full object-cover" alt="Хуушуур" width="800" height="600" loading="lazy">
+                <div class="flex flex-1 flex-col gap-2 p-5">
+                    <h3 class="text-lg font-semibold text-brand dark:text-brand-light">Хуушуур</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-300">Хонины махтай, тосонд шарсан шаржигнуур гурилан бүтээгдэхүүн.</p>
+                </div>
+                <div class="px-5 pb-5">
+                    <a href="#contact" class="inline-block rounded bg-brand px-3 py-1.5 text-sm text-white hover:bg-brand-hover">Захиалах</a>
+                </div>
+            </article>
+
+            <article class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-800">
+                <img src="../img/buuz.webp" class="aspect-[4/3] w-full object-cover" alt="Бууз" width="800" height="600" loading="lazy">
+                <div class="flex flex-1 flex-col gap-2 p-5">
+                    <h3 class="text-lg font-semibold text-brand dark:text-brand-light">Бууз</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-300">Уураар чанасан, дотроо шөлтэй махан бөөрөнхий хоол.</p>
+                </div>
+                <div class="px-5 pb-5">
+                    <a href="#contact" class="inline-block rounded bg-brand px-3 py-1.5 text-sm text-white hover:bg-brand-hover">Захиалах</a>
+                </div>
+            </article>
+
+            <article class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-800">
+                <img src="../img/tsuiwan.webp" class="aspect-[4/3] w-full object-cover" alt="Цуйван" width="800" height="600" loading="lazy">
+                <div class="flex flex-1 flex-col gap-2 p-5">
+                    <h3 class="text-lg font-semibold text-brand dark:text-brand-light">Цуйван</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-300">Гар аргаар элдсэн гурил, мах, ногоотой хуурсан хоол.</p>
+                </div>
+                <div class="px-5 pb-5">
+                    <a href="#contact" class="inline-block rounded bg-brand px-3 py-1.5 text-sm text-white hover:bg-brand-hover">Захиалах</a>
+                </div>
+            </article>
+
+            <article class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-800">
+                <img src="../img/banshtai_tsai.webp" class="aspect-[4/3] w-full object-cover" alt="Банштай цай" width="800" height="600" loading="lazy">
+                <div class="flex flex-1 flex-col gap-2 p-5">
+                    <h3 class="text-lg font-semibold text-brand dark:text-brand-light">Банштай цай</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-300">Сүүтэй цайнд чанасан банш, шар тос хийж идэх өглөөний хоол.</p>
+                </div>
+                <div class="px-5 pb-5">
+                    <a href="#contact" class="inline-block rounded bg-brand px-3 py-1.5 text-sm text-white hover:bg-brand-hover">Захиалах</a>
+                </div>
+            </article>
+
+            <article class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-800">
+                <img src="../img/horhog.webp" class="aspect-[4/3] w-full object-cover" alt="Хорхог" width="800" height="600" loading="lazy">
+                <div class="flex flex-1 flex-col gap-2 p-5">
+                    <h3 class="text-lg font-semibold text-brand dark:text-brand-light">Хорхог</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-300">Халуун чулуугаар чанасан хонины мах, ихэвчлэн хүндэтгэлийн хоол.</p>
+                </div>
+                <div class="px-5 pb-5">
+                    <a href="#contact" class="inline-block rounded bg-brand px-3 py-1.5 text-sm text-white hover:bg-brand-hover">Захиалах</a>
+                </div>
+            </article>
+
+            <article class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-800">
+                <img src="../img/bantan.webp" class="aspect-[4/3] w-full object-cover" alt="Бантан" width="800" height="600" loading="lazy">
+                <div class="flex flex-1 flex-col gap-2 p-5">
+                    <h3 class="text-lg font-semibold text-brand dark:text-brand-light">Бантан</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-300">Гурилыг жижиглэн нунтаглаж, махтай шөлөнд чанасан зутан шөл.</p>
+                </div>
+                <div class="px-5 pb-5">
+                    <a href="#contact" class="inline-block rounded bg-brand px-3 py-1.5 text-sm text-white hover:bg-brand-hover">Захиалах</a>
+                </div>
+            </article>
+            </div>
+        </section>
+
+        <!-- Form validation -->
+        <section id="contact" aria-labelledby="contactTitle" class="mx-auto max-w-6xl px-4 pb-12">
+            <h2 id="contactTitle" class="mb-1 text-2xl font-semibold text-brand dark:text-brand-light">Захиалга / Холбоо барих</h2>
+            <p class="mb-6 text-neutral-600 dark:text-neutral-300">Бүх талбарыг бөглөнө үү.</p>
+
+            <div id="formSuccess" role="status"
+                 class="mb-4 hidden rounded-md border border-green-600 bg-green-100 px-4 py-3 text-green-800 dark:bg-green-900 dark:text-green-100">
+                Таны хүсэлт амжилттай илгээгдлээ. Баярлалаа!
+            </div>
+
+            <form id="contactForm" novalidate class="group grid gap-4 md:grid-cols-2">
+                <div>
+                    <label for="name" class="mb-1 block text-sm font-medium">Нэр</label>
+                    <input type="text" id="name" name="name" required minlength="2" autocomplete="name"
+                           class="peer w-full rounded-md border border-neutral-300 bg-white px-3 py-2 dark:border-neutral-600 dark:bg-neutral-900 group-data-[validated]:invalid:border-red-600 group-data-[validated]:valid:border-green-600">
+                    <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400 group-data-[validated]:peer-invalid:block">Нэрээ дор хаяж 2 тэмдэгтээр бичнэ үү.</p>
+                </div>
+                <div>
+                    <label for="email" class="mb-1 block text-sm font-medium">Имэйл</label>
+                    <input type="email" id="email" name="email" required autocomplete="email"
+                           class="peer w-full rounded-md border border-neutral-300 bg-white px-3 py-2 dark:border-neutral-600 dark:bg-neutral-900 group-data-[validated]:invalid:border-red-600 group-data-[validated]:valid:border-green-600">
+                    <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400 group-data-[validated]:peer-invalid:block">Зөв имэйл хаяг оруулна уу.</p>
+                </div>
+                <div>
+                    <label for="phone" class="mb-1 block text-sm font-medium">Утас</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{8}" inputmode="numeric" autocomplete="tel"
+                           class="peer w-full rounded-md border border-neutral-300 bg-white px-3 py-2 dark:border-neutral-600 dark:bg-neutral-900 group-data-[validated]:invalid:border-red-600 group-data-[validated]:valid:border-green-600">
+                    <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400 group-data-[validated]:peer-invalid:block">8 оронтой утасны дугаар оруулна уу.</p>
+                </div>
+                <div>
+                    <label for="dish" class="mb-1 block text-sm font-medium">Хоол</label>
+                    <select id="dish" name="dish" required
+                            class="peer w-full rounded-md border border-neutral-300 bg-white px-3 py-2 dark:border-neutral-600 dark:bg-neutral-900 group-data-[validated]:invalid:border-red-600 group-data-[validated]:valid:border-green-600">
+                        <option value="" selected disabled>Сонгоно уу</option>
+                        <option>Хуушуур</option>
+                        <option>Бууз</option>
+                        <option>Цуйван</option>
+                        <option>Банштай цай</option>
+                        <option>Хорхог</option>
+                        <option>Бантан</option>
+                    </select>
+                    <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400 group-data-[validated]:peer-invalid:block">Хоолоо сонгоно уу.</p>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="message" class="mb-1 block text-sm font-medium">Зурвас</label>
+                    <textarea id="message" name="message" rows="4" required minlength="10"
+                              class="peer w-full rounded-md border border-neutral-300 bg-white px-3 py-2 dark:border-neutral-600 dark:bg-neutral-900 group-data-[validated]:invalid:border-red-600 group-data-[validated]:valid:border-green-600"></textarea>
+                    <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400 group-data-[validated]:peer-invalid:block">Зурвас дор хаяж 10 тэмдэгттэй байх ёстой.</p>
+                </div>
+                <div class="md:col-span-2">
+                    <input type="checkbox" id="agree" required class="peer mr-2">
+                    <label for="agree">Мэдээлэл боловсруулахыг зөвшөөрч байна</label>
+                    <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400 group-data-[validated]:peer-invalid:block">Үргэлжлүүлэхийн тулд зөвшөөрнө үү.</p>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="cursor-pointer rounded bg-brand px-5 py-2 text-white hover:bg-brand-hover">Илгээх</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-neutral-800 py-3 text-center text-sm text-white dark:bg-neutral-950">
+        <p>&copy; 2026 Монгол Хоолны Вэб Сайт. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
